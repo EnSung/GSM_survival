@@ -7,13 +7,15 @@ public class Item : MonoBehaviour
 
     public float currentTime;
     public float coolTime;
-    void Start()
-    {
-        
-    }
 
-    void Update()
+    public float radius;
+    public float power;
+
+    public virtual void Update()
     {
-        
+        UseItem();
+    }
+    public virtual void UseItem() { 
+
     }
 }
