@@ -15,7 +15,14 @@ public class Item : MonoBehaviour
     {
         UseItem();
     }
-    public virtual void UseItem() { 
+    public virtual void UseItem()
+    {
 
+    }
+
+
+    protected virtual void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

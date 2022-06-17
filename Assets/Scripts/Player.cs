@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Player : Unit
 {
@@ -11,6 +12,7 @@ public class Player : Unit
     public float currentEXP;
     public UnityEvent onLevelup;
 
+    public Image HpUI;
     public float EXPRatio => currentEXP / currentMaxEXP;
 
     List<Item> items = new List<Item>();
@@ -23,6 +25,7 @@ public class Player : Unit
     private void Update()
     {
         move();
+        rigid.velocity = Vector2.zero;
     }
 
     public override void move()
@@ -33,6 +36,13 @@ public class Player : Unit
     public override void onHit(float power)
     {
         base.onHit(power);
+        hpUpdate();
+    }
+
+    void hpUpdate()
+    {
+        HpUI.fillAmount = hp / maxHp;
+        HpUI.gameObject.SetActive(!(hp >= maxHp));
     }
 
     public void UpEXP(float exp)
@@ -50,6 +60,6 @@ public class Player : Unit
         ++level;
         currentEXP = 0;
         currentMaxEXP *= 1.5f;
-    }
+    }   
 
 }
