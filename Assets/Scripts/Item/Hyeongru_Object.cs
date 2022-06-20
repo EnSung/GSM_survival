@@ -18,11 +18,13 @@ public class Hyeongru_Object : MonoBehaviour
     public float power;
 
     public float spawnTime;
+    public GameObject circleObj;
 
     private void OnEnable()
     {
         spawnTime = Time.time + 15;
         t = 0;
+        circleObj.SetActive(true);
 
     }
     void Start()
@@ -36,6 +38,7 @@ public class Hyeongru_Object : MonoBehaviour
         if (spawnTime < Time.time)
         {
             gameObject.SetActive(false);
+            circleObj.SetActive(false);
             h.currentTime = Time.time + h.coolTime;
         }
 
@@ -68,7 +71,7 @@ public class Hyeongru_Object : MonoBehaviour
         anim.SetTrigger("attack");
 
 
-        Collider2D[] col = Physics2D.OverlapCircleAll(transform.position, radius, monsterMask);
+        Collider2D[] col = Physics2D.OverlapCircleAll(IngameManager.Instance.player.transform.position, radius, monsterMask);
 
         foreach (Collider2D c in col)
         {

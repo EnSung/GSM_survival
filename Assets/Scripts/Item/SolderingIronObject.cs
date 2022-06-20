@@ -18,7 +18,7 @@ public class SolderingIronObject : MonoBehaviour
     public float damageTime;
     private void OnEnable()
     {
-        t = Time.time + 2;
+        t = Time.time + soldering.keepingTime;
         try {
             col = Physics2D.OverlapCircleAll(transform.position, radius, monsterMask);
             target = col[0];

@@ -11,6 +11,10 @@ public class IngameManager : Singleton<IngameManager>
     [Header("Prefab")]
     public List<GameObject> monsterPrefabs;
     public GameObject expPrefab;
+
+
+    [Header("list")]
+    public List<Item> itemList;
     protected override void Awake()
     {
         base.Awake();

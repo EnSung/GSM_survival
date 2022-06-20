@@ -43,24 +43,25 @@ public class Monster : Unit
         anim.SetTrigger("onhit");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!collision.gameObject.CompareTag("Player")) return;
 
-        if (!collision.CompareTag("Player")) return;
 
-
-        collision.GetComponent<Player>().onHit(power);
+        collision.gameObject.GetComponent<Player>().onHit(power);
     }
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!collision.CompareTag("Player")) return;
+        if (!collision.gameObject.CompareTag("Player")) return;
 
         t += Time.deltaTime;
 
         if (t >= attackTime)
         {
 
-            collision.GetComponent<Player>().onHit(power);
+            collision.gameObject.GetComponent<Player>().onHit(power);
             t = 0;
         }
     }

@@ -15,11 +15,17 @@ public class Player : Unit
     public Image HpUI;
     public float EXPRatio => currentEXP / currentMaxEXP;
 
-    List<Item> items = new List<Item>();
+    public Dictionary<System.Type, Item> activeItems = new Dictionary<System.Type, Item>();
+    public Dictionary<System.Type, Item> passiveItems = new Dictionary<System.Type, Item>();
     Rigidbody2D rigid;
+
+    public Vector2 dir;
+
+    public SpriteRenderer sr;
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        StartCoroutine(flipXCroutine());
     }
 
     private void Update()
@@ -28,8 +34,23 @@ public class Player : Unit
         rigid.velocity = Vector2.zero;
     }
 
+
+    IEnumerator flipXCroutine()
+    {
+        while (true)
+        {
+            yield return null;
+            sr.flipX = !sr.flipX;
+
+            yield return new WaitForSeconds(.7f);
+        }
+
+
+    }
+
     public override void move()
     {
+        dir = (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) == Vector2.zero) ? dir : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         transform.Translate(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed * Time.deltaTime);
     }
 
@@ -42,7 +63,7 @@ public class Player : Unit
     void hpUpdate()
     {
         HpUI.fillAmount = hp / maxHp;
-        HpUI.gameObject.SetActive(!(hp >= maxHp));
+        HpUI.gameObject.transform.parent.gameObject.SetActive(!(hp >= maxHp));
     }
 
     public void UpEXP(float exp)

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &307473137805294805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307473137805294804}
+  - component: {fileID: 307473137805294803}
+  m_Layer: 7
+  m_Name: Rhino
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &307473137805294804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307473137805294805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307473137805294803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307473137805294805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e419cffd36f2a44b3e98d55a2cf054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\uD604\uBE48\uC774\uC758 \uB3CC\uC9C4"
+  itemImage: {fileID: 21300000, guid: 271c5e286d560c149a7b5037c5ee04d3, type: 3}
+  itemExplanation: "\uD604\uBE48\uC774\uAC00 \uCF54\uBFD4\uC18C\uCC98\uB7FC \uB2EC\uB824\uAC00
+    \uD53C\uD574\uB97C \uC785\uD78C\uB2E4"
+  itemtype: 0
+  currentTime: 0
+  coolTime: 3
+  radius: 0
+  power: 5
+  level: 0
+  projectilePrefabs: {fileID: 1194622965264881904, guid: 61d1b1ddab424ec41959b32fa4f0b718, type: 3}
+  monsterMask:
+    serializedVersion: 2
+    m_Bits: 2048

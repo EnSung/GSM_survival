@@ -9,8 +9,8 @@ public class Hyeongru : Item
 
     private void Start()
     {
-        hO.power = power;
-        hO.radius = radius;
+        hO.power = applyPower;
+        hO.radius = applyRadius;
     }
     public override void Update()
     {
@@ -29,6 +29,15 @@ public class Hyeongru : Item
 
 
 
+
+    }
+
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        applyRadius = radius + level * 0.4f;
+        hO.radius = applyRadius;
+        hO.power = applyPower;
 
     }
 

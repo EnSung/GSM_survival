@@ -24,7 +24,6 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster"))
         {
             collision.gameObject.GetComponent<Monster>().onHit(power);
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.contacts[0].normal*-1 * 40);
             Destroy(gameObject);
         }
     }
