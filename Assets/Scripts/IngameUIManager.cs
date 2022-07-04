@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -14,14 +15,35 @@ public class IngameUIManager : Singleton<IngameUIManager>
     public GameObject levelup_panel;
 
     public ItemButton[] levelup_button;
+
+
+    [Header("Item UI")]
+    public GameObject itemUIPrefab;
+    public Dictionary<System.Type, Item_Image_Object> itemImageObject = new Dictionary<System.Type, Item_Image_Object>();
+
+    public Transform itemUIParent;
+    [Header("Gameover")]
+    public GameObject gameoverPanel;
+
+    [Header("Backpack")]
+    public GameObject backpackPanel;
+    public Image backpackItemImg;
+
+    [Header("Time")]
+    public TMP_Text time;
     void Start()
     {
-        
+        backpackPanel.GetComponentInChildren<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     void Update()
     {
         EXP_UI_Refresh();
+
+        string minute = (((int)IngameManager.Instance.gameTime / 60) > 9) ? ((int)IngameManager.Instance.gameTime / 60).ToString() : "0" + ((int)IngameManager.Instance.gameTime / 60).ToString();
+        string second = (((int)(IngameManager.Instance.gameTime) % 60) > 9) ? ((int)(IngameManager.Instance.gameTime) % 60).ToString() : ("0" + ((int)(IngameManager.Instance.gameTime) % 60)).ToString();
+
+        time.text = minute + ":" + second;
     }
 
     public void EXP_UI_Refresh()
@@ -60,6 +82,36 @@ public class IngameUIManager : Singleton<IngameUIManager>
             itemText[1].text = IngameManager.Instance.itemList[idx].itemExplanation;
         }
 
+    }
+
+    public void gamover()
+    {
+        Time.timeScale = 0;
+        gameoverPanel.SetActive(true);
+    }
+
+    public void ClickRestartBtn()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("GameScene");
+
+    }
+
+
+    public void backpackOpen(Backpack backpack, Item item)
+    {
+        Time.timeScale = 0;
+        
+        backpackPanel.SetActive(true);
+        backpack.gameObject.SetActive(false);
+        backpack.gameObject.SetActive(true);
+        backpackItemImg.sprite = item.itemImage;
+    }
+
+    public void backpackClose()
+    {
+        backpackPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
 }

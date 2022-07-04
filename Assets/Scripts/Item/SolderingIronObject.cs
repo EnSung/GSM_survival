@@ -8,7 +8,7 @@ public class SolderingIronObject : MonoBehaviour
     float t;
     [SerializeField] float rotateSpeed;
     public float power;
-    SolderingIron soldering;
+    public SolderingIron soldering;
 
     Collider2D[] col;
     Collider2D target;
@@ -30,7 +30,6 @@ public class SolderingIronObject : MonoBehaviour
     }
     void Start()
     {
-        soldering = GetComponentInParent<SolderingIron>();
     }
 
     void Update()

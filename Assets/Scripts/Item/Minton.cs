@@ -59,6 +59,12 @@ public class Minton : Item
 
     }
 
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        applyPower *= 1.65f;
+    }
+
     protected override void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(atkPos.position, atkSize);

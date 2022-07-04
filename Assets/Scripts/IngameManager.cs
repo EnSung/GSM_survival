@@ -15,9 +15,26 @@ public class IngameManager : Singleton<IngameManager>
 
     [Header("list")]
     public List<Item> itemList;
+
+    public GameObject backpackPrefab;
+
+    public GameObject wallMonsterPrefab;
+
+    public GameObject bossMonsterPrefab;
+
+    public GameObject HealObjectPrefab;
+    public float gameTime;
+
+
+    
     protected override void Awake()
     {
         base.Awake();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
+    }
+
+    private void Update()
+    {
+        gameTime += Time.deltaTime;
     }
 }

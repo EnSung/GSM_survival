@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour
 {
 
     public float hp;
-    public float maxHp;
+    public float MaxHp;
     public float speed;
     public float power;
 

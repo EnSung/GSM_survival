@@ -9,6 +9,7 @@ public class Rhino : Item
 
     public LayerMask monsterMask;
 
+    
     void Start()
     {
         
@@ -30,6 +31,13 @@ public class Rhino : Item
 
                 currentTime = Time.time + coolTime;
         }
+    }
+
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        coolTime *= 0.8f;
+        applyPower *= 1.2f;
     }
 
 }

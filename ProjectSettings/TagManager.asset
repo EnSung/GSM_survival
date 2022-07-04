@@ -9,16 +9,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - EXP
   - Water
   - UI
-  - 
+  - Rhino
   - Player
   - Projectile
   - wall
   - 
   - Monster
-  - 
+  - wallMonster
   - 
   - 
   - 

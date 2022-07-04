@@ -8,7 +8,6 @@ public class RhinoProjectile : Projectile
     void Start()
     {
         t = Time.time + 1.5f;
-        Debug.Log(transform.rotation.z);
         if (transform.rotation.z >= 0.7f && transform.rotation.z <= 1 || transform.rotation.z <= -0.7f)
         {
             GetComponent<SpriteRenderer>().flipY = true;

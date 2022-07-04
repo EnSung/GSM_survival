@@ -10,13 +10,14 @@ public class ItemButton : MonoBehaviour
 
     public void itemSpawn()
     {
-        Debug.Log(IngameManager.Instance.player.activeItems.ContainsKey(IngameManager.Instance.itemList[idx].GetType()) || IngameManager.Instance.player.passiveItems.ContainsKey(IngameManager.Instance.itemList[idx].GetType()));
         if (IngameManager.Instance.player.activeItems.ContainsKey(IngameManager.Instance.itemList[idx].GetType()) || IngameManager.Instance.player.passiveItems.ContainsKey(IngameManager.Instance.itemList[idx].GetType()))
         {
             switch (IngameManager.Instance.itemList[idx].itemtype)
             {
                 case itemType.active:
                     IngameManager.Instance.player.activeItems[IngameManager.Instance.itemList[idx].GetType()].LevelUp();
+                    IngameUIManager.Instance.itemImageObject[IngameManager.Instance.itemList[idx].GetType()].level_up(IngameManager.Instance.player.activeItems[IngameManager.Instance.itemList[idx].GetType()].level);
+
                     break;
                 case itemType.passive:
                     IngameManager.Instance.player.passiveItems[IngameManager.Instance.itemList[idx].GetType()].LevelUp();
@@ -44,6 +45,12 @@ public class ItemButton : MonoBehaviour
                 default:
                     break;
             }
+
+            Item_Image_Object obj2 = Instantiate(IngameUIManager.Instance.itemUIPrefab).GetComponent<Item_Image_Object>();
+            obj2.idx = this.idx;
+            obj2.itemType = IngameManager.Instance.itemList[idx].GetType();
+            IngameUIManager.Instance.itemImageObject.Add(obj2.itemType, obj2);
+            obj2.transform.parent = IngameUIManager.Instance.itemUIParent;
         }
 
         IngameUIManager.Instance.levelup_panel.SetActive(false);

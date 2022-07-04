@@ -37,6 +37,14 @@ public class Tumbler : Item
         }
     }
 
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        coolTime *= 0.9f;
+
+        applyPower *= 1.5f;
+    }
+
     protected override void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

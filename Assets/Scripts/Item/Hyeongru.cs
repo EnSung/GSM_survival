@@ -36,6 +36,7 @@ public class Hyeongru : Item
     {
         base.LevelUp();
         applyRadius = radius + level * 0.4f;
+        applyPower *= 1.2f;
         hO.radius = applyRadius;
         hO.power = applyPower;
 

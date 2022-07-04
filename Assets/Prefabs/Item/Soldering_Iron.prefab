@@ -195,6 +195,7 @@ MonoBehaviour:
   radius: 0
   rotateSpeed: 0
   power: 0
+  soldering: {fileID: 1983347771400556691}
   monsterMask:
     serializedVersion: 2
     m_Bits: 2048

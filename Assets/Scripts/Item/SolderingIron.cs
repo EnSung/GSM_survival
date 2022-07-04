@@ -27,9 +27,19 @@ public class SolderingIron : Item
 
         if (col.Length <= 0) return;
 
-        useObject.gameObject.SetActive(true);
 
-        
+            useObject.gameObject.SetActive(true);
+            
+
+
+    }
+
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        coolTime *= 0.7f;
+
+        applyPower *= 1.8f;
     }
 
     protected override void OnDrawGizmosSelected()

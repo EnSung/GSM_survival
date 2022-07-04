@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class EXPObject : MonoBehaviour
 {
-    public float radius;
-    public LayerMask playerMask;
     public float speed = 6f;
-
+    public bool isNearlyPlayer;
     void Start()
     {
         
     }
 
-    void Update()
+    protected virtual void Update()
     {
-        Collider2D player = Physics2D.OverlapCircle(transform.position, radius,playerMask);
 
-        if (player)
+        if (isNearlyPlayer)
         {
             transform.position = Vector2.MoveTowards(transform.position, IngameManager.Instance.player.transform.position, speed * Time.deltaTime);
         }
@@ -27,7 +24,7 @@ public class EXPObject : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            IngameManager.Instance.player.UpEXP(2);
+            IngameManager.Instance.player.UpEXP(5);
             Destroy(gameObject);
         }
     }

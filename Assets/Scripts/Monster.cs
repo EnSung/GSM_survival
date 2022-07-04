@@ -11,11 +11,15 @@ public class Monster : Unit
 
     public float attackTime;
     float t;
-    private void Start()
+    protected virtual void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        if (IngameManager.Instance.player.level > 0)
+            MaxHp *= Mathf.Pow(1.3f, IngameManager.Instance.player.level); 
+        hp = MaxHp;
+        
     }
     private void Update()
     {
@@ -34,6 +38,9 @@ public class Monster : Unit
 
     public void Die()
     {
+        float random = Random.Range(0,1000);
+        if (random >= 1000)
+            Instantiate(IngameManager.Instance.backpackPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
